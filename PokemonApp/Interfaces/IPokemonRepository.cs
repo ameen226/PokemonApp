@@ -5,9 +5,11 @@ namespace PokemonApp.Interfaces
 {
     public interface IPokemonRepository : IGenericRepository<Pokemon>
     {
-        Pokemon GetPokemon(string name);
-        Pokemon GetPokemonTrimToUpper(PokemonDto pokemonCreate);
-        decimal GetPokemonRating(int pokeId);
+        Task<ICollection<Pokemon>> GetAllPokemonsAsync();
+        Task CreatePokemonAsync(int ownerId, int categoryId, Pokemon pokemon);
+        Task<Pokemon> GetPokemonAsync(string name);
+        Task<Pokemon> GetPokemonTrimToUpperAsync(PokemonDto pokemonCreate);
+        Task<decimal> GetPokemonRatingAsync(int pokeId);
 
     }
 }
