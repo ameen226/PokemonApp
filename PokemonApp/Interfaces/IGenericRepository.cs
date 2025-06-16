@@ -3,10 +3,10 @@
     public interface IGenericRepository<T> where T : class
     {
 
-        bool EntityExists(int id);
+        Task<bool> EntityExistsAsync(int id);
         Task<ICollection<T>> GetAllAsync();
         Task<T> GetById(int id);
-        Task Add(T entity);
+        Task AddAsync(T entity);
         void Delete(T entity);
         void Update(T entity);
 
