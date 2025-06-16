@@ -3,8 +3,8 @@ namespace PokemonApp.Interfaces
 {
     public interface ICountryRepository : IGenericRepository<Country>
     {
-        Country GetCountryByOwner(int ownerId);
-        ICollection<Owner> GetOwnersFromACountry(int countryId);
+        Task<Country> GetCountryByOwnerAsync(int ownerId);
+        Task<ICollection<Owner>> GetOwnersFromACountryAsync(int countryId);
 
     }
 }
