@@ -4,9 +4,9 @@
     {
         ICategoryRepository Categories { get; }
         ICountryRepository Countries { get; }
-        IOwnerRepository Owner { get; }
+        IOwnerRepository Owners { get; }
         IPokemonRepository Pokemons { get; }
-        IReviewerRepository Reviewer { get; }
+        IReviewerRepository Reviewers { get; }
         IReviewRepository Reviews { get; }
         Task<int> SaveAsync();
 
