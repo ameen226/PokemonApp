@@ -11,6 +11,8 @@ namespace PokemonApp
             CreateMap<Pokemon, PokemonDto>();
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();
+            CreateMap<Category, CategoryUpdateDto>();
+            CreateMap<CategoryUpdateDto, Category>();
             CreateMap<CountryDto, Country>();
             CreateMap<OwnerDto, Owner>();
             CreateMap<PokemonDto, Pokemon>();
