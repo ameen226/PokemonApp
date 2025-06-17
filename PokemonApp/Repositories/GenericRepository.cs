@@ -34,7 +34,7 @@ namespace PokemonApp.Repositories
             return await _db.Set<T>().ToListAsync();
         }
 
-        public async Task<T> GetById(int id)
+        public virtual async Task<T> GetByIdAsync(int id)
         {
             return await _db.Set<T>().FindAsync(id);
         }
