@@ -170,6 +170,7 @@ namespace PokemonApp.Controllers
             if (res <= 0)
             {
                 ModelState.AddModelError("", "Something went wrong deleting category");
+                return StatusCode(500, ModelState);
             }
 
             return NoContent();

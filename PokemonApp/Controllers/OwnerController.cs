@@ -172,7 +172,10 @@ namespace PokemonApp.Controllers
             var res = await _unitOfWork.SaveAsync();
 
             if (res <= 0)
+            {
                 ModelState.AddModelError("", "Something went wrong deleting owner");
+                return StatusCode(500, ModelState);
+            }
 
             return NoContent();
         }
