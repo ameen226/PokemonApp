@@ -38,7 +38,7 @@ namespace PokemonApp.Controllers
         }
 
         [HttpGet("{categoryId}")]
-        [ProducesResponseType(200, Type = typeof(Category))]
+        [ProducesResponseType(200, Type = typeof(CategoryDto))]
         [ProducesResponseType(400)]
 
         public async Task<IActionResult> GetCategory(int categoryId)
@@ -56,7 +56,7 @@ namespace PokemonApp.Controllers
         }
 
         [HttpGet("pokemon/{categoryId}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Pokemon>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<PokemonDto>))]
         [ProducesResponseType(400)]
 
         public async Task<IActionResult> GetPokemonByCategoryId(int categoryId)
