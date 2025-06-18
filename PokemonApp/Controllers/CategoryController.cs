@@ -43,7 +43,10 @@ namespace PokemonApp.Controllers
 
         public async Task<IActionResult> GetCategory(int categoryId)
         {
-            if (! await _unitOfWork.Categories.EntityExistsAsync(categoryId)) ;
+            if (! await _unitOfWork.Categories.EntityExistsAsync(categoryId))
+            {
+                return NotFound();
+            }
 
             var category = _mapper.Map<CategoryDto>(await _unitOfWork.Categories.GetByIdAsync(categoryId));
 
