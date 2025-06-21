@@ -28,6 +28,7 @@ namespace PokemonApp.Controllers
 
 
         [HttpPost]
+        [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterationRequestDto requestDto)
         {
             if (!ModelState.IsValid)
@@ -75,6 +76,52 @@ namespace PokemonApp.Controllers
             });
 
         }
+
+
+        [HttpPost]
+        [Route("Login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto requestDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var user = await _userManager.FindByEmailAsync(requestDto.Email);
+
+            if (user == null)
+            {
+                return BadRequest(new AuthResult()
+                {
+                    Result = false,
+                    Errors = new List<string>()
+                    {
+                        "Invalid Credentials"
+                    }
+                });
+            }
+
+            var isCorrect = await _userManager.CheckPasswordAsync(user, requestDto.Password);
+
+            if (!isCorrect)
+            {
+                return BadRequest(new AuthResult()
+                {
+                    Result = false,
+                    Errors = new List<string>()
+                    {
+                        "Invalid Credentials"
+                    }
+                });
+            }
+
+            var token = GenerateJwtToken(user);
+
+            return Ok(new AuthResult()
+            {
+                Result = true,
+                Token = token
+            });
+        }
+
 
 
 
