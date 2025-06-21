@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PokemonApp.Interfaces;
@@ -8,6 +9,7 @@ using PokemonApp.Repositories;
 
 namespace PokemonApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OwnerController : ControllerBase
